@@ -1,14 +1,11 @@
-const Topbar = ({ fullName }) => {
+import React from 'react'
+
+const Topbar = () => {
     return (
-      <div className="topbar">
-        <span>{fullName}</span>
-        <div className="topbar-icons">
-          <span>🔔</span>
-          <span>👤</span>
+        <div style={{ height: '60px', background: '#ecf0f1', padding: '10px 20px' }}>
+            <h4>Dashboard</h4>
         </div>
-      </div>
     )
-  }
-  
-  export default Topbar
-  
+}
+
+export default Topbar

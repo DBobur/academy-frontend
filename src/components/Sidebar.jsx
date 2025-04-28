@@ -1,30 +1,20 @@
-import { FaHome, FaUser, FaUsers, FaFileAlt, FaCog, FaSignOutAlt } from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Sidebar = ({ role }) => {
-  return (
-    <aside className="sidebar">
-      <div className="logo">
-        <h2 style={{ color: '#00A859' }}>LMS<span style={{ color: '#ff3333' }}>Online</span></h2>
-      </div>
-      <nav>
-        <ul>
-          <li><NavLink to="/dashboard"><FaHome /> Dashboard</NavLink></li>
-          <li><NavLink to="/profile"><FaUser /> Profile</NavLink></li>
-          {(role === 'SUPER' || role === 'ADMIN' || role === 'MANEGER') && (
-            <>
-              <li><NavLink to="/users"><FaUsers /> Users</NavLink></li>
-              <li><NavLink to="/contracts"><FaFileAlt /> Contracts</NavLink></li>
-            </>
-          )}
-          <li><NavLink to="/settings"><FaCog /> Settings</NavLink></li>
-        </ul>
-      </nav>
-      <div className="sidebar-footer">
-        <a href="/logout"><FaSignOutAlt /> Logout</a>
-      </div>
-    </aside>
-  )
+const Sidebar = () => {
+    return (
+        <div style={{ width: '220px', background: '#2c3e50', color: 'white', padding: '20px' }}>
+            <h2>Academy</h2>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+                <li><Link style={{ color: 'white' }} to="/home">Home</Link></li>
+                <li><Link style={{ color: 'white' }} to="/">Dashboard</Link></li>
+                <li><Link style={{ color: 'white' }} to="/profile">Profile</Link></li>
+                <li><Link style={{ color: 'white' }} to="/users">Users</Link></li>
+                <li><Link style={{ color: 'white' }} to="/users">Users</Link></li>
+            </ul>
+
+        </div>
+    )
 }
 
 export default Sidebar

@@ -1,35 +1,20 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Outlet, useNavigate } from 'react-router-dom'
+import React from 'react'
 import Sidebar from '../components/Sidebar'
-import Topbar from '../components/Topbar'
+import Topbar from '../components/Topbar.jsx'
+import { Outlet } from 'react-router-dom'
 
 const MainLayout = () => {
-  const [user, setUser] = useState(null)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-    if (!token) return navigate('/')
-    axios.get('http://localhost:8080/api/v1/user/me', {
-      headers: { Authorization: `Bearer ${token}` }
-    }).then(res => setUser(res.data))
-      .catch(() => navigate('/'))
-  }, [])
-
-  if (!user) return <div>Loading...</div>
-
-  return (
-    <div className="layout-container">
-      <Sidebar role={user.role} />
-      <div className="main-section">
-        <Topbar fullName={user.fullName} />
-        <div className="page-content">
-          <Outlet context={{ user }} />
+    return (
+        <div className="layout-container" style={{ display: 'flex', height: '100vh' }}>
+            <Sidebar />
+            <div style={{ flex: 1 }}>
+                <Topbar />
+                <div style={{ padding: '20px' }}>
+                    <Outlet />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default MainLayout
