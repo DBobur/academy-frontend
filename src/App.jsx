@@ -1,15 +1,15 @@
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
-import AppRoutes from './routes/AppRouts.jsx'
-import {ToastContainer} from "react-toastify";
+import { AuthProvider } from "./store/AuthContext.jsx";
+import AppRouter from "./routes/Router";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  return (
-      <BrowserRouter>
-        <AppRoutes />
-          <ToastContainer position="top-right" autoClose={3000} />
-      </BrowserRouter>
-  )
+    return (
+        <AuthProvider>
+            <AppRouter />
+            <ToastContainer />
+        </AuthProvider>
+    );
 }
 
-export default App
+export default App;
